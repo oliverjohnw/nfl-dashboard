@@ -1,5 +1,5 @@
 nfl_data_py==0.3.3
-pandas==1.5
+pandas
 pytz==2024.1
 PyYAML==6.0.2
 PyYAML==6.0.2
