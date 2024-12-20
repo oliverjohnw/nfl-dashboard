@@ -1,0 +1,6 @@
+nfl_data_py==0.3.3
+pandas==2.2.3
+pytz==2024.1
+PyYAML==6.0.2
+PyYAML==6.0.2
+streamlit==1.40.2

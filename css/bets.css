@@ -1,0 +1,9 @@
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12.5px auto;
+    font-size: 15px;
+    border-radius: 2px;
+    overflow: hidden;
+    background-color: #1e1e1e;
+}

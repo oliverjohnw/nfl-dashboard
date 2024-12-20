@@ -1,0 +1,51 @@
+/* General styles for the table container */
+.table-container {
+    width: 100%; 
+    font-size: 20px; 
+    text-align: left;
+}
+
+.table-container:last-child {
+    margin-right: 0; /* Remove margin for the last table */
+}
+
+/* Team name header */
+.table-container h3 {
+    color: white;
+    margin-bottom: 1px; /* Reduce spacing below the header */
+    text-align: center; /* Center-align the team name */
+    font-size: 30px; /* Slightly smaller font size for team names */
+}
+
+/* Styles for the table */
+.table-container table {
+    width: 100%; /* Let the table occupy the full width of its container */
+    border-collapse: collapse;
+    margin: auto;
+}
+
+/* Header row styles */
+.table-container thead tr {
+    background-color: #444;
+    color: white;
+    font-size: 20px; /* Slightly smaller header font */
+}
+
+/* Table cell styles */
+.table-container th,
+.table-container td {
+    padding: 2px; /* Reduce padding for a more compact look */
+    border: 1px solid #666;
+    text-align: center;
+    color: #ddd;
+    font-size: 15px !important; /* Smaller font size for table cells */
+    line-height: 1.2; /* Adjust line height for compactness */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .table-container {
+        width: 100%; /* Stack tables vertically */
+        margin-bottom: 20px; /* Add space between stacked tables */
+    }
+}

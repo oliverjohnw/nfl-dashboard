@@ -1,0 +1,12 @@
+.game-time {
+    margin-top: -80px;
+    padding-top: 0;
+    margin-bottom: 0; /* No space below game information */
+    padding-bottom: 0; /* No extra padding below */
+    text-align: center; /* Align text to the left for better visual flow */
+}
+
+.game-time p {
+    margin: 1.5px 0; /* Adjust the vertical spacing */
+    line-height: 1.5; /* Adjust line spacing for better readability */
+}

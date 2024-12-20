@@ -1,0 +1,123 @@
+.info-container {
+    display: flex;
+    flex-direction: row; /* Horizontal alignment */
+    justify-content: space-between;
+    align-items: center;
+    padding: 1px; /* Reduced padding */
+    margin: 0px; /* Reduced vertical margin */
+    background-color: #1e1e2f;
+    border: 1px solid #E0E0E0;
+    border-radius: 1px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.info-header {
+    font-size: 1.5rem; /* Adjusted size */
+    font-weight: bold;
+    margin-bottom: 1px;
+    color: azure;
+}
+
+.info-detail {
+    font-size: 1rem; /* Adjusted size */
+    color: #E0E0E0;
+}
+
+.centered-game-info {
+    font-size: 3rem !important; 
+    text-align: center;
+    font-weight: bold !important;
+    color: azure;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; 
+}
+.centered-game-info p {
+    margin: 0;
+}
+
+
+body {
+    background-color: #121212; /* Dark gray instead of pure black */
+}
+
+.team {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px; /* Increased padding inside the team card */
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+    background-color: #1e1e2f;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 2px 1px; /* Add margin to separate cards better */
+}
+
+.team-logo {
+    width: 100px !important;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 2px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-logo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #f1f1f1;
+}
+
+.team-content {
+    padding: 2px; /* Extra padding for better readability */
+    text-align: center;
+    color: white;
+}
+
+.team-content h3 {
+    font-size: 1.8rem; /* Team name */
+    font-weight: bold;
+    margin: 1px 0;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #FFFFFF;
+}
+.team-content p.record {
+    font-size: 1.2rem; /* Slightly smaller font for record */
+    font-weight: bold;
+    margin: 1px 0;
+    color: #E0E0E0;
+}
+
+.team-content p.stats {
+    font-size: 1rem; /* Stats font size reduced */
+    margin: 1px 0;
+    color: #B0B0B0;
+    transition: color 0.3s ease;
+}
+
+.team-content p.stats:hover {
+    color: #FFFFFF;
+}
+
+.stats span {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+}
+
+@media (max-width: 768px) {
+    .team {
+        flex-direction: column; /* Stack cards on smaller screens */
+        align-items: center;
+    }
+    .team-logo {
+        width: 20px; /* Reduce logo size */
+    }
+    .team-content h3 {
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
+    }
+    .centered-game-info {
+        font-size: 2rem; /* Scale down game info text */
+    }
+}
