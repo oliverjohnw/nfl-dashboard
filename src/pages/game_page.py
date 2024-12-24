@@ -21,9 +21,6 @@ def game_page(
         week (int): week
         dashboard_configs (dict): dictionary with inputs/params for app
     """
-    # streamlit custom CSS
-    streamlit_css("css/matchup_information.css")
-
     # teams
     away_team = game_choice.split(" @ ")[0]
     home_team = game_choice.split(" @ ")[1]

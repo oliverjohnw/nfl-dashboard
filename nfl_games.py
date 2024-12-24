@@ -18,7 +18,7 @@ streamlit_css("css/main.css")
 
 # week choice
 week_choice = st.sidebar.selectbox("Select Week", 
-                                   ["Week 16", "Week 17", "Week 18", "Week 13", "Week 14", "Week 15"]
+                                   ["Week 17", "Week 18", "Week 13", "Week 14", "Week 15", "Week 16"]
                                    )
 
 # read in schedule information

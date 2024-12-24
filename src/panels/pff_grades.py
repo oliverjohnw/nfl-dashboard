@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 
 # local imports
-from src.utils import  streamlit_css
+from src.utils import  streamlit_css, load_data
 
 def pff_grades(
     away_team: str,
@@ -23,8 +23,8 @@ def pff_grades(
     streamlit_css("css/pff_grades.css")
 
     # load in PFF grades
-    pff_team_grade_data_path = dashboard_configs["data"]["pff_team_grades"]
-    pff_team_grade_data = pd.read_excel(pff_team_grade_data_path, sheet_name=f"Week {week}")
+    pff_team_grade_data_path = st.secrets["data"]["pff_team_grades"]
+    pff_team_grade_data = load_data(pff_team_grade_data_path, sheet_name=f"Week {week}")
 
     # filter data
     needed_cols = ["OVER", "OFF", "DEF", "PASS", "PBLK", "RUN", "RBLK", "PRSH", "RDEF", "COV", "TACK"]

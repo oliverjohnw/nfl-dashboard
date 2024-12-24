@@ -9,6 +9,7 @@
     background-color: #1e1e1e;
     text-align: left !important; /* Align text to the left */
     margin-left: 0 !important;
+    margin-bottom: 10px;
 }
 .comparison-table th, .comparison-table td {
     border: 1px solid #444;

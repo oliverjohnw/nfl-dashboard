@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 
 # local imports
-from src.utils import  streamlit_css
+from src.utils import  streamlit_css, load_data
 
 def bets(
     away_team: str,
@@ -23,8 +23,8 @@ def bets(
     streamlit_css("css/bets.css")
 
     # load in betting data
-    betting_data_path = dashboard_configs["data"]["bets"]
-    betting_data = pd.read_excel(betting_data_path, sheet_name=f"Week {week}")
+    betting_data_path = st.secrets["data"]["bets"]
+    betting_data = load_data(betting_data_path, sheet_name=f"Week {week}")
 
     # filter to game
     betting_data[['away_team', 'home_team']] = betting_data['Game'].str.split(' @ ', expand=True)

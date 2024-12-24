@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # local imports
-from src.utils import streamlit_css
+from src.utils import streamlit_css, load_data
 
 def injury_report(
     away_team: str,
@@ -22,9 +22,8 @@ def injury_report(
     streamlit_css("css/injury_report.css")
 
     # load injury report
-    injury_report_data_path = dashboard_configs["data"]["injury_report"]
-    injury_report_data_path = injury_report_data_path.format(week_number=week)
-    injury_report_data = pd.read_excel(injury_report_data_path, sheet_name=f"Week {week}")
+    injury_report_data_path = st.secrets["data"]["injury_report"]
+    injury_report_data = load_data(injury_report_data_path, sheet_name=f"Week {week}")
 
     # filter by team
     away_injury_report = injury_report_data[injury_report_data["Team"] == away_team]

@@ -50,6 +50,7 @@ def team_information(
         away_color = team_info_config[away_team]["color"]
         away_record_info = team_records.loc[team_records["team"] == away_team]
 
+        # TODO: Fix records
         # display away team
         with col1:
             st.markdown(f"""
@@ -57,7 +58,7 @@ def team_information(
                 <img src="{away_logo}" alt="Away Logo" class="team-logo"/>
                 <div class="team-content">
                     <h3 style="background-color: {away_color};">{away_name}</h3>
-                    <p class="record"><strong>Record: {away_record_info["Record"].iloc[0]}</strong></p>
+                    <p class="record"><strong>Record:</strong></p>
                     <p class="stats"><span>🏠 {away_record_info["Home Record"].iloc[0]}</span> | <span>✈️ {away_record_info["Away Record"].iloc[0]} </span></p>
                     <p class="stats"><span>📈 ATS: {away_record_info["ATS"].iloc[0]}</span> | <span>O/U: {away_record_info["OU"].iloc[0]}</span></p>
                 </div>
@@ -77,7 +78,7 @@ def team_information(
                 <img src="{home_logo}" alt="Home Logo" class="team-logo"/>
                 <div class="team-content">
                     <h3 style="background-color: {home_color};">{home_name}</h3>
-                    <p class="record"><strong>Record: {home_record_info["Record"].iloc[0]}</strong></p>
+                    <p class="record"><strong>Record:</strong></p>
                     <p class="stats"><span>🏠 {home_record_info["Home Record"].iloc[0]}</span> | <span>✈️ {home_record_info["Away Record"].iloc[0]} </span></p>
                     <p class="stats"><span>📈 ATS: {home_record_info["ATS"].iloc[0]}</span> | <span>O/U: {home_record_info["OU"].iloc[0]}</span></p>
                 </div>

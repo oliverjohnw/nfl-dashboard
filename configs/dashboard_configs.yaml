@@ -3,9 +3,4 @@ configs:
   schedule: "configs/external/schedule/NFL Schedule 2024-2025.csv"
 
 data:
-  weather: "data/external/Weather.xlsx"
-  game_lines: "data/external/Game Lines.xlsx"
-  pff_team_grades: "data/external/PFF Team Grades.xlsx"
-  injury_report: "data/external/Injury Report.xlsx"
   team_records: "data/external/team_records/week_{week_number}_team_records.csv"
-  bets: "data/external/NFL Bets.xlsx"

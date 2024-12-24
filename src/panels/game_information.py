@@ -4,7 +4,7 @@ from datetime import datetime
 import pytz
 
 # local imports
-from src.utils import streamlit_css
+from src.utils import streamlit_css, load_data
 
 def game_information(
     away_team: str,
@@ -32,12 +32,12 @@ def game_information(
     schedule_info = pd.read_csv(schedule_info_path)
 
     # load weekly weather
-    weather_data_path = dashboard_configs["data"]["weather"]
-    weather_data = pd.read_excel(weather_data_path, sheet_name = f'Week {week}')
+    weather_data_path = st.secrets["data"]["weather"]
+    weather_data = load_data(weather_data_path, sheet_name = f'Week {week}')
 
     # load game line information
-    game_lines_path = dashboard_configs["data"]["game_lines"]
-    game_lines = pd.read_excel(game_lines_path, sheet_name=f"Week {week}")
+    game_lines_path = st.secrets["data"]["game_lines"]
+    game_lines = load_data(game_lines_path, sheet_name=f"Week {week}")
     game_lines.loc[:, "Spread Odds"] = game_lines["Spread Odds"].apply(lambda x: "+" + str(x) if x > 0 else str(x))
     game_lines.loc[:, "Total Odds"] = game_lines["Total Odds"].apply(lambda x: "+" + str(x) if x > 0 else str(x))
 
