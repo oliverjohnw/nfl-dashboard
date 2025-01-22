@@ -3,8 +3,8 @@ import pandas as pd
 import re
 
 # local imports
-from src.utils import read_file, streamlit_css
-from src.pages import game_page, week_page
+from src.utils import read_file, streamlit_css, load_data
+from src.pages import game_page
 
 # dasboard configs
 dashboard_configs = read_file("configs/dashboard_configs.yaml")
@@ -18,15 +18,18 @@ streamlit_css("css/main.css")
 
 # week choice
 week_choice = st.sidebar.selectbox("Select Week", 
-                                   ["Week 17", "Week 18", "Week 13", "Week 14", "Week 15", "Week 16"]
+                                   ["Championship"]
                                    )
 
 # read in schedule information
-schedule_info_path = dashboard_configs["configs"]["schedule"]
-schedule_info = pd.read_csv(schedule_info_path)
+schedule_info_path = st.secrets["data"]["schedule"]
+schedule_info = load_data(schedule_info_path, sheet_name = "NFL Schedule 2024-2025")
 
 # week
-week = int([int(num) for num in re.findall(r'\d+', week_choice)][0])
+if week_choice not in ["Divisional", "Championship"]:
+    week = int([int(num) for num in re.findall(r'\d+', week_choice)][0])
+else:
+    week = week_choice
 
 # weekly games
 weekly_games_data = schedule_info.loc[schedule_info["week"] == week, :]
@@ -41,7 +44,3 @@ game_choice = st.sidebar.selectbox("Select Game", weekly_games)
 # weekly overview
 if game_choice != "Weekly Overview":
     game_page(game_choice, week, dashboard_configs)
-
-# weekly overview
-else:
-    week_page(week, dashboard_configs, weekly_games_data)

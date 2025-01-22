@@ -24,10 +24,11 @@ def bets(
 
     # load in betting data
     betting_data_path = st.secrets["data"]["bets"]
-    betting_data = load_data(betting_data_path, sheet_name=f"Week {week}")
-
+    sheet_name = f"Week {week}" if week not in ["Divisional", "Championship"] else week
+    betting_data = load_data(betting_data_path, sheet_name=sheet_name)
+    
     # filter to game
-    betting_data[['away_team', 'home_team']] = betting_data['Game'].str.split(' @ ', expand=True)
+    betting_data[['away_team', 'home_team']] = betting_data['Game'].astype(str).split(' @ ', expand=True)
     game_betting_data = betting_data.loc[
         (betting_data['home_team'] == home_team) & (betting_data['away_team'] == away_team), :
     ]

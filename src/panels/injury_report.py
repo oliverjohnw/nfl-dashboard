@@ -23,15 +23,16 @@ def injury_report(
 
     # load injury report
     injury_report_data_path = st.secrets["data"]["injury_report"]
-    injury_report_data = load_data(injury_report_data_path, sheet_name=f"Week {week}")
+    sheet_name = f"Week {week}" if week not in ["Divisional", "Championship"] else week
+    injury_report_data = load_data(injury_report_data_path, sheet_name=sheet_name)
 
     # filter by team
     away_injury_report = injury_report_data[injury_report_data["Team"] == away_team]
     home_injury_report = injury_report_data[injury_report_data["Team"] == home_team]
 
     # filter and cast
-    away_injury_report = away_injury_report.loc[:, ["Player", "Position", "Status", "Ruling"]].astype(str)
-    home_injury_report = home_injury_report.loc[:, ["Player", "Position", "Status", "Ruling"]].astype(str)
+    away_injury_report = away_injury_report.loc[:, ["Player", "Position", "Status"]].astype(str)
+    home_injury_report = home_injury_report.loc[:, ["Player", "Position", "Status"]].astype(str)
 
     # sort
     away_injury_report = away_injury_report.sort_values(by="Position", ascending=True)
@@ -60,7 +61,7 @@ def render_table(data: pd.DataFrame, team_name: str):
         table_html += "<tr>"
         for col in data.columns:
             cell_value = row[col]
-            if col == "Ruling":
+            if col == "Status":
                 if cell_value == "In":
                     bg_color = "Green"
                 elif cell_value == "Out":

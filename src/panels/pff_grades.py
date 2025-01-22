@@ -24,7 +24,8 @@ def pff_grades(
 
     # load in PFF grades
     pff_team_grade_data_path = st.secrets["data"]["pff_team_grades"]
-    pff_team_grade_data = load_data(pff_team_grade_data_path, sheet_name=f"Week {week}")
+    sheet_name = f"Week {week}" if week not in ["Divisional", "Championship"] else week
+    pff_team_grade_data = load_data(pff_team_grade_data_path, sheet_name=sheet_name)
 
     # filter data
     needed_cols = ["OVER", "OFF", "DEF", "PASS", "PBLK", "RUN", "RBLK", "PRSH", "RDEF", "COV", "TACK"]

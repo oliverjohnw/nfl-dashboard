@@ -68,24 +68,3 @@ def game_page(
         with st.container():
             st.subheader("Bets")
             bets(away_team, home_team, week, dashboard_configs)
-
-
-        # with right_column:
-        #     with st.container():
-        #         st.subheader("Game Notes")
-        #         game_notes(away_team, home_team, week, dashboard_configs)
-
-
-    #     with st.container():
-    #         st.subheader("Injury Report")
-    #         injury_report(away_team, home_team, week, dashboard_configs)
-
-    # with st.container():
-    #     st.subheader("Game Notes")
-    #     game_notes(away_team, home_team, week, dashboard_configs)
-
-    # # bets
-    # with right_column:
-    #     with st.container():
-    #         st.subheader("Bets")
-    #         bets(away_team, home_team, week, dashboard_configs)

@@ -1,6 +1,2 @@
 configs:
   team_info: "configs/external/team_info.yaml"
-  schedule: "configs/external/schedule/NFL Schedule 2024-2025.csv"
-
-data:
-  team_records: "data/external/team_records/week_{week_number}_team_records.csv"

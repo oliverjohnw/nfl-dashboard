@@ -28,16 +28,17 @@ def game_information(
     streamlit_css("css/game_information.css")
 
     # Load game schedule
-    schedule_info_path = dashboard_configs["configs"]["schedule"]
-    schedule_info = pd.read_csv(schedule_info_path)
+    schedule_info_path = st.secrets["data"]["schedule"]
+    schedule_info = load_data(schedule_info_path, sheet_name = "NFL Schedule 2024-2025")
 
     # load weekly weather
     weather_data_path = st.secrets["data"]["weather"]
-    weather_data = load_data(weather_data_path, sheet_name = f'Week {week}')
+    sheet_name = f"Week {week}" if week not in ["Divisional", "Championship"] else week
+    weather_data = load_data(weather_data_path, sheet_name = sheet_name)
 
     # load game line information
     game_lines_path = st.secrets["data"]["game_lines"]
-    game_lines = load_data(game_lines_path, sheet_name=f"Week {week}")
+    game_lines = load_data(game_lines_path, sheet_name=sheet_name)
     game_lines.loc[:, "Spread Odds"] = game_lines["Spread Odds"].apply(lambda x: "+" + str(x) if x > 0 else str(x))
     game_lines.loc[:, "Total Odds"] = game_lines["Total Odds"].apply(lambda x: "+" + str(x) if x > 0 else str(x))
 
@@ -57,15 +58,15 @@ def game_information(
     game_day = game_info["weekday"].iloc[0]
 
     # game date
-    game_date = datetime.strptime(game_info["gameday"].iloc[0], "%m/%d/%Y").strftime("%B %d, %Y")
+    game_date = pd.to_datetime(game_info["gameday"].iloc[0]).date()
 
     # game time
-    game_time = game_info["gametime"].iloc[0]
+    game_time = str(game_info["gametime"].iloc[0])
 
     # map to central time
     utc = pytz.timezone("EST")
     central = pytz.timezone("US/Central")
-    time_obj = datetime.strptime(game_time, "%H:%M")
+    time_obj = datetime.strptime(game_time, "%H:%M:%S")
     time_with_date = datetime.now().replace(hour=time_obj.hour, minute=time_obj.minute, second=0, microsecond=0)
     localized_time = utc.localize(time_with_date)
     central_time = localized_time.astimezone(central).strftime("%I:%M %p")
